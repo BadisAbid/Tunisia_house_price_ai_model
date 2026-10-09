@@ -2,7 +2,7 @@
  
 # 🏠 Tunisia House Price Prediction
  
-**A machine learning model and web app that estimates residential property prices across Tunisia, with an R² score of 85.20%.**
+**A machine learning model and web app that estimates residential property prices across Tunisia, with an R² score of 85.21%.**
  
 [![Python](https://img.shields.io/badge/Python-3.9+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
@@ -39,7 +39,7 @@ The pipeline covers the full workflow: data cleaning, exploratory analysis, feat
  
 ## ✨ Features
  
-- **Instant price estimates** in TND and EUR from a simple form, powered by a model with an **R² of 85.20%**
+- **Instant price estimates** in TND and EUR from a simple form, powered by a model with an **R² of 85.21%**
 - **Wide geographic coverage**: 16 governorates and 50+ cities and neighbourhoods, including Tunis, Ariana, Ben Arous, Nabeul, Sousse, Sfax, Djerba, and more
 - **Rich property inputs**: area, number of pieces, rooms, bathrooms, age bracket, and condition
 - **11 amenity flags**: garage, garden, pool, elevator, beach view, mountain view, furnished, equipped kitchen, central heating, air conditioning, concierge
@@ -82,7 +82,7 @@ Tunisia_house_price_ai_model/
 ## 🔬 Methodology
  
 ### 1. Data
-Property listings from across Tunisia (`dataSetFull.csv`) were cleaned and standardized into `dataset_clean.csv`.
+Property listings from across Tunisia (`dataSetFull.csv`) were cleaned and standardized into `dataset_clean.csv` (2,458 listings). After removing price-per-m² and area outliers, **2,313 properties** and **31 features** remained, split into 1,966 training and 347 test samples.
  
 ### 2. Feature Engineering
  
@@ -98,7 +98,7 @@ Property listings from across Tunisia (`dataSetFull.csv`) were cleaned and stand
 Unseen cities fall back to the global mean of the corresponding encoding.
  
 ### 3. Modeling
-Several algorithms (tree-based models, XGBoost, and a neural network) were trained and compared. The target is **log-transformed** (`log1p`) to reduce skew and converted back with `expm1` at prediction time. The best model is saved with its metadata and loaded by the app. When the selected model is a neural network, inputs are scaled with the saved `scaler.pkl`.
+Four approaches were trained and compared: a tuned **Random Forest**, a tuned **XGBoost** regressor, a **Neural Network** (Keras, 300 epochs with early stopping), and **stacking ensembles** combining them. The final model is a **Stacking ensemble with an XGBoost meta-learner**. The target is **log-transformed** (`log1p`) to reduce skew and converted back with `expm1` at prediction time. The best model is saved with its metadata and loaded by the app. When the selected model is a neural network, inputs are scaled with the saved `scaler.pkl`.
  
 ## 🚀 Getting Started
  
@@ -164,10 +164,22 @@ X = prepare_features(sample)
  
 | Metric | Value |
 | --- | --- |
-| Best model | _add model name (e.g. XGBoost / Random Forest / Neural Network)_ |
-| R² score | **0.852 (85.20%)** |
-| MAE | _add value_ |
-| RMSE | _add value_ |
+| Best model | **Stacking Ensemble (XGBoost meta-learner)** |
+| R² score | **0.8521 (85.21%)** |
+| MAE | **125,272 TND** |
+| RMSE | **239,141 TND** |
+ 
+Evaluated on a held-out test set of 347 properties (15% split, `random_state=42`).
+ 
+### Model comparison
+ 
+| Model | R² | MAE (TND) | RMSE (TND) |
+| --- | --- | --- | --- |
+| Random Forest (tuned) | 0.8416 | 120,963 | 247,466 |
+| XGBoost (tuned) | 0.8460 | 121,229 | 244,028 |
+| Neural Network (300 epochs) | 0.8428 | 129,414 | 246,556 |
+| Stacking Ensemble (Ridge meta) | 0.8508 | 118,561 | 240,207 |
+| **Stacking Ensemble (XGB meta)** | **0.8521** | 125,272 | **239,141** |
  
 > The in-app R² badge is read from `model_info.pkl`. Update this table with the results from your notebook.
  
