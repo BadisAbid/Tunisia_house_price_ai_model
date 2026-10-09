@@ -1,9 +1,8 @@
-
 ![Tunisia House Price AI Model](logo_2.png)
  
 # 🏠 Tunisia House Price Prediction
  
-**A machine learning model and web app that estimates residential property prices across Tunisia.**
+**A machine learning model and web app that estimates residential property prices across Tunisia, with an R² score of 85.20%.**
  
 [![Python](https://img.shields.io/badge/Python-3.9+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
@@ -40,7 +39,7 @@ The pipeline covers the full workflow: data cleaning, exploratory analysis, feat
  
 ## ✨ Features
  
-- **Instant price estimates** in TND and EUR from a simple form
+- **Instant price estimates** in TND and EUR from a simple form, powered by a model with an **R² of 85.20%**
 - **Wide geographic coverage**: 16 governorates and 50+ cities and neighbourhoods, including Tunis, Ariana, Ben Arous, Nabeul, Sousse, Sfax, Djerba, and more
 - **Rich property inputs**: area, number of pieces, rooms, bathrooms, age bracket, and condition
 - **11 amenity flags**: garage, garden, pool, elevator, beach view, mountain view, furnished, equipped kitchen, central heating, air conditioning, concierge
@@ -166,7 +165,7 @@ X = prepare_features(sample)
 | Metric | Value |
 | --- | --- |
 | Best model | _add model name (e.g. XGBoost / Random Forest / Neural Network)_ |
-| R² score | _add value_ |
+| R² score | **0.852 (85.20%)** |
 | MAE | _add value_ |
 | RMSE | _add value_ |
  
