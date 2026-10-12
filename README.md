@@ -37,7 +37,7 @@ Property pricing in Tunisia is often opaque and varies widely between governorat
  
 The pipeline covers the full workflow: data cleaning, exploratory analysis, feature engineering, model training and comparison, and deployment through an interactive **Streamlit** web application where users enter property details and receive an instant estimate in both **Tunisian Dinar (TND)** and **Euro (EUR)**.
  
-## ✨ Features
+## Features
  
 - **Instant price estimates** in TND and EUR from a simple form, powered by a model with an **R² of 85.21%**
 - **Wide geographic coverage**: 16 governorates and 50+ cities and neighbourhoods, including Tunis, Ariana, Ben Arous, Nabeul, Sousse, Sfax, Djerba, and more
