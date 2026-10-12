@@ -212,7 +212,7 @@ No license has been specified yet. Consider adding one (for example [MIT](https:
  
 ## 👤 Author
  
-**Badis Abid**
+**Mohamed Badis Abid**
  
 - GitHub: [@BadisAbid](https://github.com/BadisAbid)
 ---
