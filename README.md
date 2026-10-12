@@ -196,8 +196,7 @@ Evaluated on a held-out test set of 347 properties (15% split, `random_state=42`
 - [ ] Support more cities and rural areas
 - [ ] Fetch live TND/EUR exchange rates
 - [ ] Add prediction confidence intervals
-- [ ] Containerize with Docker
-- [ ] Deploy to Streamlit Community Cloud
+
 ## 🤝 Contributing
  
 Contributions, issues, and feature requests are welcome.
